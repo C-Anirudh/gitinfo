@@ -55,6 +55,9 @@ func getUserInfo(name string) User {
 
 	var user User
 	json.NewDecoder(resp.Body).Decode(&user)
+	if len(user.Login) == 0 {
+		Exit(fmt.Sprintf("User with username '%s' doesn't exist !", name))
+	}
 	return user
 }
 
