@@ -20,11 +20,17 @@ $ sudo cp gitinfo /usr/bin/gitinfo
 ## :rocket: Usage
 ```
 $ gitinfo --help
-$ gitinfo -user <GitHub username>
+```
+OR
+```
+$ gitinfo
+Usage: gitinfo [options]
+Options:
+         -u      The GitHub username of the person
 ```
 
 ```
-$ gitinfo -user kenneth-reitz
+$ gitinfo -u kenneth-reitz
 Username                      :  kenneth-reitz
 Name                          :  Kenneth Reitz
 Email                         :  
