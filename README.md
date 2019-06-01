@@ -1,8 +1,8 @@
 ![gitinfo-cover](logo.png)
 
-[![GitHub Watches](https://img.shields.io/github/watchers/C-Anirudh/gitinfo.svg?style=social&label=Watch&maxAge=2592000)]
-[![GitHub Starts](https://img.shields.io/github/stars/C-Anirudh/gitinfo.svg?style=social&label=Star&maxAge=2592000)]
-[![GitHub Forks](https://img.shields.io/github/forks/C-Anirudh/gitinfo.svg?style=social&label=Fork&maxAge=2592000)]
+[![GitHub Watches](https://img.shields.io/github/watchers/C-Anirudh/gitinfo.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/C-Anirudh/gitinfo/watchers)
+[![GitHub Starts](https://img.shields.io/github/stars/C-Anirudh/gitinfo.svg?style=social&label=Star&maxAge=2592000)](https://github.com/C-Anirudh/gitinfo/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/C-Anirudh/gitinfo.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/C-Anirudh/gitinfo/network)
 
 CLI tool to search for GitHub users and projects.
 
