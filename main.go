@@ -6,11 +6,12 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 )
 
 func main() {
 	user := flag.String("u", "", "The GitHub username of the person.   (required input)")
-	fileName := flag.String("f", "", "The file name with .json extension to which information has to be copied.")
+	fileName := flag.String("f", "", "The file name with path and .json extension to which information has to be copied. Path should be relative to home directory")
 	flag.Parse()
 
 	if len(*user) == 0 {
@@ -18,10 +19,13 @@ func main() {
 		os.Exit(1)
 	}
 
+	out, _ := exec.Command("sh", "-c", "eval echo ~$USER").Output()
+	out = out[:len(out)-1]
+
 	userInfo := getUserInfo(*user)
 
 	if len(*fileName) != 0 {
-		f, err := os.Create(*fileName)
+		f, err := os.Create(string(out) + *fileName)
 		if err != nil {
 			log.Fatal(err)
 			os.Exit(1)
@@ -48,5 +52,6 @@ func printUsage() {
 	fmt.Printf("Usage: %s [options]\n", os.Args[0])
 	fmt.Println("Options:")
 	fmt.Println("\t -u\t The GitHub username of the person\t(required input)")
-	fmt.Println("\t -f\t The file name with .json extension to which information has to be copied")
+	fmt.Println("\t -f\t The file name with path and .json extension to which information has to be copied")
+	fmt.Println("\t   \t Path should be relative to home directory")
 }
