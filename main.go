@@ -1,13 +1,16 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
+	"log"
 	"os"
 )
 
 func main() {
-	user := flag.String("u", "", "The GitHub username of the person.")
+	user := flag.String("u", "", "The GitHub username of the person.   (required input)")
+	fileName := flag.String("f", "", "The file name with .json extension to which information has to be copied.")
 	flag.Parse()
 
 	if len(*user) == 0 {
@@ -16,6 +19,17 @@ func main() {
 	}
 
 	userInfo := getUserInfo(*user)
+
+	if len(*fileName) != 0 {
+		f, err := os.Create(*fileName)
+		if err != nil {
+			log.Fatal(err)
+			os.Exit(1)
+		}
+
+		data, err := json.Marshal(userInfo)
+		fmt.Fprintf(f, "%s\n", data)
+	}
 	printUserInfo(userInfo)
 }
 
@@ -33,5 +47,6 @@ func printUserInfo(result User) {
 func printUsage() {
 	fmt.Printf("Usage: %s [options]\n", os.Args[0])
 	fmt.Println("Options:")
-	fmt.Println("\t -u\t The GitHub username of the person")
+	fmt.Println("\t -u\t The GitHub username of the person\t(required input)")
+	fmt.Println("\t -f\t The file name with .json extension to which information has to be copied")
 }
